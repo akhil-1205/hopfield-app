@@ -32,7 +32,37 @@ if 'weights' not in st.session_state:
 
 # Title and sidebar
 st.title("Hopfield Network App")
-st.sidebar.title("Sidebar")
+
+##Sidebar crap
+st.sidebar.title("📌 Hopfield Network Overview")
+
+st.sidebar.markdown("""
+### 🧠 What is a Hopfield Network?
+A Hopfield network is a type of recurrent neural network used for associative memory. It can store patterns and retrieve them even when the input is noisy or incomplete.
+
+### 🌟 How It Works:
+1. **Initialization:** Start with a set of binary patterns to store.
+2. **Training:** Use the Hebbian rule to compute the weight matrix.
+3. **Retrieval:** Update the network state iteratively until convergence.
+""")
+
+# Use raw string (r"") to avoid escape issues
+st.sidebar.markdown("### 📏 Hebbian Rule:")
+st.sidebar.latex(r"W_{ij} = \frac{1}{N} \sum_{\mu=1}^{P} \xi_i^\mu \xi_j^\mu")
+
+st.sidebar.markdown(r"""
+where:  
+- \( N \) = number of neurons  
+- \( P \) = number of patterns  
+- \( \xi_i^\mu \) = state of neuron \( i \) in pattern \( \mu \)  
+
+### ✅ Algorithm Steps:
+1. Load the input pattern.  
+2. Apply Hebbian learning to compute the weight matrix.  
+3. Use asynchronous or synchronous updates to converge to a stable state.  
+4. Compare final state to the stored pattern.  
+""")
+
 
 # Load PBM files
 pbm_files = [f for f in os.listdir("pbm_files") if f.endswith(".pbm")]
